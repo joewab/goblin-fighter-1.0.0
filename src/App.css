@@ -1,0 +1,38 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    height: 20vh;
+    display: flex;
+    font-family: Brutal Font Pro;
+    font-size: 6rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    /* font-size: calc(10px + 2vmin); */
+    color: rgb(176, 0, 0);
+  }
+  
+  .App-body{
+    margin: 0;
+    background-color: brown;
+    height: 100vh;
+  
+    .flex-grid {
+      display: flex;
+    }
+    .col {
+      flex: 1;
+    }
+  
+    .versus{
+      font-family: Brutal Font Pro;
+      font-size: 4rem;
+    }
+  
+  }
+  
