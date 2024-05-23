@@ -7,9 +7,6 @@ interface MonsterProps {
   }
 
 const MonsterCard: FC<MonsterProps> = ({ monster }) => {
-    useEffect(() => {
-        console.log(monster);
-    }, [])
   
     const showMonster = () => {
         console.log(monster);

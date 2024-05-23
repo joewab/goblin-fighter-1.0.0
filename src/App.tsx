@@ -1,9 +1,10 @@
 import './App.css'
 import axios from "axios";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import { MonsterRef } from "./Interfaces/MonsterRef";
 import MonsterCard from "./MonsterCard";
 import { Monster } from "./Interfaces/Monster";
+import { useInView } from 'react-intersection-observer';
 
 interface AppProps {
   title: string;
@@ -13,16 +14,20 @@ const App: FC<AppProps> = ({ title }) => {
 
   useEffect(() => {
     getMonsters();
-  }, [])
+  });
+  
+  const { ref: myRef, inView: elementVisible } = useInView();
+  const { ref: battleRef, inView: battleVisible } = useInView();
 
-const getMonsters = () => {
-    axios({
-      method: 'GET',
-      url: 'https://www.dnd5eapi.co/api/monsters'
-    }).then((response) => {
-      setAllMonsters(response.data.results);
-    })
-  }
+
+  const getMonsters = () => {
+      axios({
+        method: 'GET',
+        url: 'https://www.dnd5eapi.co/api/monsters'
+      }).then((response) => {
+        setAllMonsters(response.data.results);
+      })
+    }
 
   const [currentMonster1, setCurrentMonster1] = useState<Monster | undefined>();
   const [currentMonster2, setCurrentMonster2] = useState<Monster | undefined>();
@@ -54,6 +59,13 @@ const getMonsters = () => {
         </p>
       </header>
       <body className='App-body'>
+        <div className='title'>Are</div>
+        <div className='title'>You</div>
+        <div ref={myRef} className='title'>{ elementVisible ? 'Ready' : 'or not' }</div>
+        <div className='title'>To</div>
+        <div ref={battleRef} className='title'>
+          <span className={`battle ${battleVisible ? 'animateBattle' : ''}`}>Battle</span>
+        </div>
         <div className='flex-grid'>
           <div className='col'>
             <MonsterCard monster={currentMonster1}/>
