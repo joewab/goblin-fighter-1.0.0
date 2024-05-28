@@ -7,10 +7,6 @@ interface MonsterProps {
   }
 
 const MonsterCard: FC<MonsterProps> = ({ monster }) => {
-  
-    const showMonster = () => {
-        console.log(monster);
-    }
 
     if(!monster){
         return (
@@ -22,8 +18,10 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
 
     return(
         <div className='monster-card'>
-            <h1>{monster.index}</h1>
-            <button onClick={showMonster}>show stats</button>
+            <div className='monsterTitle'>{monster.index}</div>
+            <div className='monsterStat'>AC: {monster.armor_class[0].value}</div>
+            <div className='monsterStat'>HP: {monster.hit_points}</div>
+            <div className='monsterStat'>CR: {monster.challenge_rating}</div>
         </div>
     );
 }

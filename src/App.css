@@ -1,3 +1,7 @@
+@font-face { font-family: limit; src: url('./assets/fonts/8-bit-limit/8bitlim.ttf'); }
+@font-face { font-family: limit-outline; src: url('./assets/fonts/8-bit-limit/8bitlimo.ttf'); }
+
+
 body {
     margin: 0;
 }
@@ -36,14 +40,75 @@ body {
       font-size: 4rem;
     }
     .title {
-        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: limit;
+        font-size: 5rem;
+        height: 200px;
     }  
+    .button {
+        padding-bottom: 5rem;
+    }
+
+    .monsterTitle {
+        font-family: limit-outline;
+        font-size: 2rem;
+    }
+
+    .monsterStat {
+        font-family: limit-outline;
+        font-size: 1rem;
+    }
 }
 
-  .battle {
+.at-rest {
     display: inline-block;
 }
 
+.animateAre {
+    animation-duration: 2s;
+    animation-name: animate-are;
+}
+
+@keyframes animate-are {
+    20% {
+        transform: scale(2);
+    }
+}
+
+.animateYou {
+    animation-duration: 5s;
+    animation-name: animate-you;
+}
+
+@keyframes animate-you {
+    20% {
+        transform: scale(2);
+    }
+}
+
+.animateReady {
+    animation-duration: 5s;
+    animation-name: animate-ready;
+}
+
+@keyframes animate-ready {
+    20% {
+        transform: scale(2);
+    }
+}
+
+.animateTo {
+    animation-duration: 5s;
+    animation-name: animate-to;
+}
+
+@keyframes animate-to {
+    20% {
+        transform: scale(2);
+    }
+}
 .animateBattle {
     animation-duration: 5s;
     animation-name: animate-battle;
@@ -66,7 +131,7 @@ body {
         transform: scale(2) rotate(0);
     }
     100% {
-        transform: scale(20) translate3D(100vw, -100vh, 0) rotate(0);
+        transform: scale(200) translate3D(100vw, -200vh, 0) rotate(0);
     }
 }
   

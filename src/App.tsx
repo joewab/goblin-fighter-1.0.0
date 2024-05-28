@@ -16,10 +16,6 @@ const App: FC<AppProps> = ({ title }) => {
     getMonsters();
   });
   
-  const { ref: myRef, inView: elementVisible } = useInView();
-  const { ref: battleRef, inView: battleVisible } = useInView();
-
-
   const getMonsters = () => {
       axios({
         method: 'GET',
@@ -28,6 +24,12 @@ const App: FC<AppProps> = ({ title }) => {
         setAllMonsters(response.data.results);
       })
     }
+
+  const { ref: areRef, inView: areVisible } = useInView();
+  const { ref: youRef, inView: youVisible } = useInView();
+  const { ref: readyRef, inView: readyVisible } = useInView();
+  const { ref: toRef, inView: toVisible } = useInView();
+  const { ref: battleRef, inView: battleVisible } = useInView();
 
   const [currentMonster1, setCurrentMonster1] = useState<Monster | undefined>();
   const [currentMonster2, setCurrentMonster2] = useState<Monster | undefined>();
@@ -46,9 +48,20 @@ const App: FC<AppProps> = ({ title }) => {
       }
     }
 
-  const resolveFight = () => {
+  //TODO: pass in entire monster and alter function to find the attack bonus
+  const resolveFight = (attack_bonus?: number) => {
+    const attackRoll = rollDice(20);
     console.log(currentMonster1);
-    console.log(currentMonster2);
+    console.log(attackRoll, attack_bonus);
+    return attack_bonus ? attackRoll + attack_bonus : attackRoll;
+  }
+
+  const rollDice = (sides: number, amount = 1) => {
+    let outcome = 0;
+    for (let i=0; i<amount; i++) {
+      outcome+= Math.floor(Math.random() * sides) + 1;
+    }
+    return outcome;
   }
 
   return (
@@ -59,12 +72,32 @@ const App: FC<AppProps> = ({ title }) => {
         </p>
       </header>
       <body className='App-body'>
-        <div className='title'>Are</div>
-        <div className='title'>You</div>
-        <div ref={myRef} className='title'>{ elementVisible ? 'Ready' : 'or not' }</div>
-        <div className='title'>To</div>
+        <div className='title'></div>
+        <div className='title'></div>
+        <div className='title'></div>
+
+        <div ref={areRef} className='title'>
+          <span className={ `at-rest ${areVisible ? 'animateAre' : ''}` }>
+            Are
+          </span>
+        </div>
+        <div ref={youRef} className='title'>
+          <span className={ `at-rest ${youVisible ? 'animateYou' : ''}` }>
+            You
+          </span>
+        </div>
+        <div ref={readyRef} className='title'>
+          <span className={ `at-rest ${readyVisible ? 'animateReady' : ''}` }>
+            Ready
+          </span>
+        </div>
+        <div ref={toRef} className='title'>
+          <span className={ `at-rest ${toVisible ? 'animateTo' : ''}` }>
+            To
+          </span>
+        </div>
         <div ref={battleRef} className='title'>
-          <span className={`battle ${battleVisible ? 'animateBattle' : ''}`}>Battle</span>
+          <span className={`at-rest ${battleVisible ? 'animateBattle' : ''}`}>Battle?</span>
         </div>
         <div className='flex-grid'>
           <div className='col'>
@@ -93,8 +126,8 @@ const App: FC<AppProps> = ({ title }) => {
             </select>
           </div>
         </div>
-        <div>
-          <button onClick={resolveFight}>Fight!</button>
+        <div className='button'>
+          <button onClick={() => resolveFight(currentMonster1?.actions[1].attack_bonus)}>Fight!</button>
         </div>
       </body>
     </div>
