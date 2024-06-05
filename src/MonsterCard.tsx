@@ -10,7 +10,7 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
 
     if(!monster){
         return (
-            <div>
+            <div className='monsterStat'>
                 Choose Your Fighter!
             </div>
         )
