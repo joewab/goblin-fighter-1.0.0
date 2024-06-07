@@ -15,6 +15,9 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
             </div>
         )
     }
+    
+    //TBD add images
+    // const monsturl = `https://www.dnd5eapi.co${monster.image}`;
 
     return(
         <div className='monster-card'>
