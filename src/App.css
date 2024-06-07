@@ -239,6 +239,8 @@ body {
         }
 
         .cloud-2 img {
+            top: -10rem;
+            position: absolute;
             width: 1000px !important;
             height: 800px !important;
         }
