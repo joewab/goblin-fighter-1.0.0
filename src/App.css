@@ -235,7 +235,12 @@ body {
         }
     
         .cloud-2 {
-            left: 500px;
+            left: 900px;
+        }
+
+        .cloud-2 img {
+            width: 1000px !important;
+            height: 800px !important;
         }
 
         .cloud-2 img {

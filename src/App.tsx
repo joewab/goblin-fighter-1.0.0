@@ -138,10 +138,10 @@ const App: FC<AppProps> = ({ title }) => {
       </header>
       <body className="App-body">
         <div className={`cloud-1 ${scrollStarted ? "animateCloud1" : ""}`}>
-          <img src={cloud1} alt="cloud" width="700" height="400" />
+          <img src={cloud1} alt="cloud"/>
         </div>
         <div className={`cloud-2 ${scrollStarted ? "animateCloud2" : ""}`}>
-          <img src={cloud2} alt="cloud" width="700" height="400" />
+          <img src={cloud2} alt="cloud"/>
         </div>
         <div ref={areRef} className="title top">
           <span className={`at-rest ${areVisible ? "animateZoom" : ""}`}>
