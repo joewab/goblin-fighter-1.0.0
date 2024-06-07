@@ -1,5 +1,5 @@
 @font-face { font-family: limit; src: url('./assets/fonts/8-bit-limit/8bitlim.ttf'); }
-@font-face { font-family: limit-outline; src: url('./assets/fonts/8-bit-limit/8bitlimo.ttf'); }
+@font-face { font-family: limit-outline; src: url('./assets/fonts/8-bit-limit/8bitlimr.ttf'); }
 
 body {
     width: 100%;
@@ -8,11 +8,11 @@ body {
 
 .App {
     text-align: center;
-    background-color: #282c34;
+    background-color: #666547;
   }
   
   .App-header {
-    background-color: #282c34;
+    background-color:#666547;
     height: 3rem;
     display: flex;
     font-family: Brutal Font Pro;
@@ -22,12 +22,12 @@ body {
     justify-content: center;
     margin: 0;
     /* font-size: calc(10px + 2vmin); */
-    color: rgb(218, 57, 57);
+    color: #FB2E01;
   }
   
   .App-body{
     margin: 0 !important;
-    background-color: brown;
+    background-color:#FB2E01;
     height: 100%;
     /* overflow for mobile only */
     overflow-y: auto;
@@ -36,28 +36,10 @@ body {
       display: flex;
       flex-direction:column;
     }
-   
-    .versus {
-      font-family: Brutal Font Pro;
-      font-size: 3rem;
-    }
-
-    .title {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: limit;
-        font-size: 5rem;
-        height: 20rem;
-        width: 100%;
-    }  
-    .button {
-        padding-bottom: 5rem;
-    }
 
     .cloud-1, .cloud-2 {
         position: sticky;
-        top: 1rem;
+        top: 0.5rem;
         height: 15rem;
         width: 10rem;
         text-align: center;
@@ -68,7 +50,7 @@ body {
     }
 
     .cloud-1 img {
-        width: 700px;
+        top: -2.5rem;
         left: -100%;
         position:absolute;
     }
@@ -76,6 +58,39 @@ body {
     .cloud-2 {
     left: 10%;
     }
+
+    .title {
+        display: flex;
+        color: #666547;
+        text-shadow: #FC0 1px 0 10px;        justify-content: center;
+        align-items: center;
+        font-family: limit;
+        font-size: 5rem;
+        height: 15rem;
+        width: 100%;
+    }
+
+    .top {
+        margin-top: 15rem;
+    }
+
+    .fighter-select {
+        background-color:#6FCB9F;
+        color: #FFFEB3;
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 5px;
+        border-style: groove;
+        border-width: 3px;
+        filter: drop-shadow(0 0 0.75rem #0E367C);
+    }
+
+    .versus {
+        font-family: Brutal Font Pro;
+        font-size: 3rem;
+        color: #666547;
+        text-shadow: #FC0 1px 0 10px;
+      }
 
     .monsterTitle {
         font-family: limit-outline;
@@ -85,6 +100,30 @@ body {
     .monsterStat {
         font-family: limit-outline;
         font-size: 1rem;
+    }
+
+    .fight-button {
+        padding-bottom: 2rem;
+    }
+
+    .fight-button button {
+        background-color:#FFE28A;
+        font-family: limit-outline;
+        border-radius: 10px;
+        border-style: solid;
+        border-color: #0E367C;
+    }
+
+    .fight-result {
+        display: flex;
+        color: #666547;
+        text-shadow: #FC0 1px 0 10px;        justify-content: center;
+        text-align: center;
+        vertical-align: text-top;
+        font-family: limit;
+        font-size: 2rem;
+        height: 10rem;
+        width: 100%;
     }
 }
 
@@ -171,7 +210,48 @@ body {
 }
   
 @media only screen and (min-width: 1000px) {
+
+    .App-header {
+        height: 6rem;
+        font-size: 6rem;
+      }
+
     .App-body {
         overflow-y:inherit;
+
+        .title {
+            height: 20rem;
+        }  
+
+        .cloud-1 {
+            right: 5px;
+        }
+    
+        .cloud-1 img {
+            width: 800px;
+            height: 600px;
+            left: -100%;
+            position:absolute;
+        }
+    
+        .cloud-2 {
+            left: 500px;
+        }
+
+        .cloud-2 img {
+            width: 800px;
+            height: 600px;
+        }
+
+        .top {
+            margin-top: 0;
+        }
+
+        .flex-grid {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+          }
     }
+
 }
