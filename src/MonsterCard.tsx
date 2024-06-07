@@ -1,6 +1,6 @@
 import './MonsterCard.css';
 import { Monster } from './Interfaces/Monster';
-import { Component, FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 
 interface MonsterProps {
     monster: Monster | undefined;
@@ -15,7 +15,7 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
             </div>
         )
     }
-    
+
     //TBD add images
     // const monsturl = `https://www.dnd5eapi.co${monster.image}`;
 

@@ -1,9 +1,9 @@
 import "./App.css";
 import axios from "axios";
-import { FC, useEffect, useState, useRef } from "react";
+import { FC, useEffect, useState } from "react";
 import { MonsterRef } from "./Interfaces/MonsterRef";
 import MonsterCard from "./MonsterCard";
-import { Action, Monster } from "./Interfaces/Monster";
+import { Monster } from "./Interfaces/Monster";
 import { useInView } from "react-intersection-observer";
 import cloud1 from "./assets/animated-storm.png";
 import cloud2 from "./assets/animated-storm-2.png";
@@ -26,7 +26,7 @@ const App: FC<AppProps> = ({ title }) => {
     });
   };
 
-  const { ref: headerRef, inView: headerVisible } = useInView({
+  const { ref: headerRef } = useInView({
     threshold: 1,
     root: null,
     rootMargin: "0px",
@@ -87,14 +87,14 @@ const App: FC<AppProps> = ({ title }) => {
     6, 7, 7, 8, 8, 9, 9, 10,
   ];
 
-  const fightSteps: string[] = [];
+  // const fightSteps: string[] = [];
 
   const resolveFight = (monster1?: Monster, monster2?: Monster) => {
-    let monster1HP: number = monster1 ? monster1.hit_points : 0;
-    let monster2HP: number = monster2 ? monster2.hit_points : 0;
+    // let monster1HP: number = monster1 ? monster1.hit_points : 0;
+    // let monster2HP: number = monster2 ? monster2.hit_points : 0;
 
-    const monster1Actions: Action[] = monster1 ? monster1?.actions : [];
-    const monster2Actions: Action[] = monster2 ? monster2?.actions : [];
+    // const monster1Actions: Action[] = monster1 ? monster1?.actions : [];
+    // const monster2Actions: Action[] = monster2 ? monster2?.actions : [];
 
     const monster1InitiativeBonus: number = monster1
       ? abilityMods[monster1.dexterity - 1]
