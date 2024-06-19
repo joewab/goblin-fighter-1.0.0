@@ -75,14 +75,13 @@ body {
     }
 
     .fighter-select {
-        background-color:#6FCB9F;
+        background-color:#d32700;
         color: #FFFEB3;
         margin: 2rem;
         padding: 1rem;
-        border-radius: 5px;
-        border-style: groove;
-        border-width: 3px;
-        filter: drop-shadow(0 0 0.75rem #0E367C);
+        border-radius: 1px;
+        border-style: solid;
+        border-width: 1px;
     }
 
     .versus {
@@ -107,14 +106,14 @@ body {
     }
 
     .fight-button button {
-        background-color:#FFE28A;
+        background-color:#d32700;
         font-family: limit-outline;
         font-size: large;
-        border-radius: 10px;
+        border-radius: 1px;
         border-style: solid;
-        border-color: #0E367C;
-        width: 5rem;
-        height: 2rem;
+        border-color: #000000;
+        width: 6rem;
+        height: 3rem;
     }
 
     .fight-result {
