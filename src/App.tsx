@@ -2,8 +2,6 @@ import "./App.css";
 import axios from "axios";
 import { FC, useEffect, useState } from "react";
 import { MonsterRef } from "./Interfaces/MonsterRef";
-import MonsterCard from "./MonsterCard";
-import { Monster } from "./Interfaces/Monster";
 import { useInView } from "react-intersection-observer";
 import cloud1 from "./assets/animated-storm.png";
 import cloud2 from "./assets/animated-storm-2.png";
