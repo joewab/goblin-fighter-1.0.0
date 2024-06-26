@@ -1,5 +1,6 @@
 @font-face { font-family: limit; src: url('./assets/fonts/8-bit-limit/8bitlim.ttf'); }
 @font-face { font-family: limit-outline; src: url('./assets/fonts/8-bit-limit/8bitlimr.ttf'); }
+@font-face { font-family: brutal; src: url('./assets/fonts/Brutal-Font-Pro/Brutal-Font-Pro-Regular.ttf'); }
 
 body {
     width: 100%;
@@ -15,7 +16,7 @@ body {
     background-color:#666547;
     height: 3rem;
     display: flex;
-    font-family: Brutal Font Pro;
+    font-family: brutal;
     font-size: 3rem;
     flex-direction: column;
     align-items: center;
@@ -85,7 +86,7 @@ body {
     }
 
     .versus {
-        font-family: Brutal Font Pro;
+        font-family: brutal;
         font-size: 3rem;
         color: #666547;
         text-shadow: #FC0 1px 0 10px;
@@ -99,6 +100,18 @@ body {
     .monsterStat {
         font-family: limit-outline;
         font-size: 1rem;
+    }
+
+    .monster-list {
+        max-height: 20rem;
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .list-monster {
+        list-style-type: none;
     }
 
     .fight-button {

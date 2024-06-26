@@ -1,5 +1,5 @@
 import './MonsterCard.css';
-import { Monster } from './Interfaces/Monster';
+import { Monster } from '../Interfaces/Monster';
 import { FC } from 'react';
 
 interface MonsterProps {

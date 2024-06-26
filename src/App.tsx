@@ -5,7 +5,8 @@ import { MonsterRef } from "./Interfaces/MonsterRef";
 import { useInView } from "react-intersection-observer";
 import cloud1 from "./assets/animated-storm.png";
 import cloud2 from "./assets/animated-storm-2.png";
-import FightArena from "./FightArea/FightArena";
+import FightArena from "./FightArena/FightArena";
+import Clouds from "./Clouds/Clouds";
 
 interface AppProps {
   title: string;
@@ -58,9 +59,18 @@ const App: FC<AppProps> = ({ title }) => {
     root: null,
     rootMargin: "0px"
   });
+  const { ref: disableClouds } = useInView({
+    threshold: 0.5,
+    root: null,
+    rootMargin: "0px",
+    onChange: (inView) => {
+      inView ? setArenaInView(true) : null;
+    }
+  });
 
   const [allMonsters, setAllMonsters] = useState<MonsterRef[]>([]);
   const [scrollStarted, setScrollStarted] = useState(false);
+  const [arenaInView, setArenaInView] = useState(false);
 
   return (
     <div className="App">
@@ -68,12 +78,7 @@ const App: FC<AppProps> = ({ title }) => {
         <p>{title}</p>
       </header>
       <body className="App-body">
-        <div className={`cloud-1 ${scrollStarted ? "animateCloud1" : ""}`}>
-          <img src={cloud1} alt="cloud"/>
-        </div>
-        <div className={`cloud-2 ${scrollStarted ? "animateCloud2" : ""}`}>
-          <img src={cloud2} alt="cloud"/>
-        </div>
+        <Clouds scrollStarted={scrollStarted} arenaInView={arenaInView} />
         <div ref={areRef} className="title top">
           <span className={`at-rest ${areVisible ? "animateZoom" : ""}`}>
             Are
@@ -101,6 +106,7 @@ const App: FC<AppProps> = ({ title }) => {
         </div>
         <FightArena allMonsters={allMonsters} />
       </body>
+      <div ref={disableClouds}></div>
     </div>
   );
 };

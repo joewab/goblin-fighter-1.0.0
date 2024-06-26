@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { MonsterRef } from "../Interfaces/MonsterRef";
-import MonsterCard from "../MonsterCard";
+import MonsterCard from "../MonsterCard/MonsterCard";
 import { Monster } from "../Interfaces/Monster";
 import axios from "axios";
 
@@ -21,15 +21,17 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
   const [filteredMonsters1, setFilteredMonsters1] = useState<MonsterRef[]>();
   const [filteredMonsters2, setFilteredMonsters2] = useState<MonsterRef[]>();
 
-  const filterMonstList = (num: number) => {
+  const filterMonstList = (filterString: string, num: number) => {
     let filteredList: MonsterRef[] | undefined;
     if (num === 1) {
       filteredList = allMonsters?.filter((monster) => {
-        return searchVal1 ? monster.index.includes(searchVal1) : [];
+        setSearchVal1(filterString)
+        return searchVal1 ? monster.index.includes(filterString) : [];
       });
     } else {
+      setSearchVal2(filterString)
       filteredList = allMonsters?.filter((monster) => {
-        return searchVal2 ? monster.index.includes(searchVal2) : [];
+        return searchVal2 ? monster.index.includes(filterString) : [];
       });
     }
     return filteredList;
@@ -37,16 +39,13 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
 
   const monsterSearch = (event: any, num: number) => {
     if (num === 1) {
-      setSearchVal1(event.target.value);
-      setFilteredMonsters1(filterMonstList(1));
+      setFilteredMonsters1(filterMonstList(event.target.value, 1));
     } else {
-      setSearchVal2(event.target.value);
-      setFilteredMonsters2(filterMonstList(2));
+      setFilteredMonsters2(filterMonstList(event.target.value, 2));
     }
   };
 
   const setHelper = (event: any, num: number) => {
-    console.log(event.target.innerText);
     if(allMonsters){
         for (let monst of allMonsters) {
             if (event.target.innerText === monst.name) {
@@ -130,7 +129,7 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
             id="monster1-search"
             placeholder="Search Monsters"
           />
-          <ul>
+          <ul className="monster-list">
             {filteredMonsters1?.map((monster) => {
               return (
                 <li
@@ -159,7 +158,7 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
             id="monster2-search"
             placeholder="Search Monsters"
           />
-          <ul>
+          <ul className="monster-list">
             {filteredMonsters2?.map((monster) => {
               return (
                 <li
