@@ -1,6 +1,5 @@
 import cloud1 from "../assets/animated-storm.png";
 import cloud2 from "../assets/animated-storm-2.png";
-import { useState } from "react";
 import React from "react";
 
 type Props = {
