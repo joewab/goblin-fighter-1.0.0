@@ -112,6 +112,7 @@ body {
 
     .list-monster {
         list-style-type: none;
+        cursor: pointer;
     }
 
     .fight-button {
