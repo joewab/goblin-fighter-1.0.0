@@ -6,7 +6,7 @@ import { rollDice } from "../../RollDice";
 
 interface AllMonsters {
   allMonsters: MonsterRef[];
-  setCurrentMonster: React.Dispatch<React.SetStateAction<Monster | undefined>>
+  setCurrentMonster: (monster: Monster) => void;
 }
 
 const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster }) => {

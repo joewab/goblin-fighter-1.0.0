@@ -16,6 +16,14 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
   const [fightBegun, setFightBegun] = useState(false);
   const [fightText, setFightText] = useState("");
 
+  const setMonster1Helper = (monster: Monster) => {
+    setCurrentMonster1(monster);
+  }
+
+  const setMonster2Helper = (monster: Monster) => {
+    setCurrentMonster2(monster);
+  }
+
   const abilityMods: number[] = [
     -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6,
     6, 7, 7, 8, 8, 9, 9, 10,
@@ -60,14 +68,14 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
       <div className="flex-grid">
         <div className="fighter-select">
           <MonsterCard monster={currentMonster1} />
-          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setCurrentMonster1} />
+          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setMonster1Helper} />
         </div>
         <div>
           <h1 className="versus">VS</h1>
         </div>
         <div className="fighter-select">
           <MonsterCard monster={currentMonster2} />
-          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setCurrentMonster2} />
+          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setMonster2Helper} />
         </div>
       </div>
       <div className="fight-button">
