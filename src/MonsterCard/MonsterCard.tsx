@@ -21,7 +21,7 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
 
     return(
         <div className='monster-card'>
-            <div className='monsterTitle'>{monster.index}</div>
+            <div className='monsterTitle'>{monster.name}</div>
             <div className='monsterStat'>AC: {monster.armor_class[0].value}</div>
             <div className='monsterStat'>HP: {monster.hit_points}</div>
             <div className='monsterStat'>CR: {monster.challenge_rating}</div>
