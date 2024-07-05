@@ -2,10 +2,11 @@ import { FC, useState } from "react";
 import { MonsterRef } from "../Interfaces/MonsterRef";
 import MonsterCard from "../MonsterCard/MonsterCard";
 import { Monster } from "../Interfaces/Monster";
-import axios from "axios";
+import { rollDice } from "../RollDice";
+import MonsterSelect from "./MonsterSelect/MonsterSelect";
 
 interface AllMonsters {
-    allMonsters: MonsterRef[] | undefined;
+    allMonsters: MonsterRef[];
   }
 
 const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
@@ -14,60 +15,6 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
 
   const [fightBegun, setFightBegun] = useState(false);
   const [fightText, setFightText] = useState("");
-
-  const [searchVal1, setSearchVal1] = useState("");
-  const [searchVal2, setSearchVal2] = useState("");
-
-  const [filteredMonsters1, setFilteredMonsters1] = useState<MonsterRef[]>();
-  const [filteredMonsters2, setFilteredMonsters2] = useState<MonsterRef[]>();
-
-  const filterMonstList = (filterString: string, num: number) => {
-    let filteredList: MonsterRef[] | undefined;
-    if (num === 1) {
-      filteredList = allMonsters?.filter((monster) => {
-        setSearchVal1(filterString)
-        return searchVal1 ? monster.index.includes(filterString) : [];
-      });
-    } else {
-      setSearchVal2(filterString)
-      filteredList = allMonsters?.filter((monster) => {
-        return searchVal2 ? monster.index.includes(filterString) : [];
-      });
-    }
-    return filteredList;
-  };
-
-  const monsterSearch = (event: any, num: number) => {
-    if (num === 1) {
-      setFilteredMonsters1(filterMonstList(event.target.value, 1));
-    } else {
-      setFilteredMonsters2(filterMonstList(event.target.value, 2));
-    }
-  };
-
-  const setHelper = (event: any, num: number) => {
-    if(allMonsters){
-        for (let monst of allMonsters) {
-            if (event.target.innerText === monst.name) {
-              axios({
-                method: "GET",
-                url: `https://www.dnd5eapi.co${monst.url}`,
-              }).then((response) => {
-                if (num === 1) {
-                  setCurrentMonster1(response?.data);
-                  setFilteredMonsters1([]);
-                  setSearchVal1(event.target.innerText);
-                } else {
-                  setCurrentMonster2(response?.data);
-                  setFilteredMonsters2([]);
-                  setSearchVal2(event.target.innerText);
-                }
-              });
-            }
-        }
-    }
-    
-  };
 
   const abilityMods: number[] = [
     -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6,
@@ -108,71 +55,19 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
     setFightBegun(true);
   };
 
-  const rollDice = (sides: number, amount = 1) => {
-    let outcome = 0;
-    for (let i = 0; i < amount; i++) {
-      outcome += Math.floor(Math.random() * sides) + 1;
-    }
-    return outcome;
-  };
-
   return (
     <>
       <div className="flex-grid">
         <div className="fighter-select">
           <MonsterCard monster={currentMonster1} />
-          <input
-            onChange={(e) => monsterSearch(e, 1)}
-            value={searchVal1}
-            type="text"
-            name="monster1-search"
-            id="monster1-search"
-            placeholder="Search Monsters"
-          />
-          <ul className="monster-list">
-            {filteredMonsters1?.map((monster) => {
-              return (
-                <li
-                  key={monster.index}
-                  className="list-monster"
-                  value={monster.name}
-                  onClick={(e) => setHelper(e, 1)}
-                >
-                  {" "}
-                  {monster.name}{" "}
-                </li>
-              );
-            })}
-          </ul>
+          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setCurrentMonster1} />
         </div>
-        <div className="col">
+        <div>
           <h1 className="versus">VS</h1>
         </div>
         <div className="fighter-select">
           <MonsterCard monster={currentMonster2} />
-          <input
-            onChange={(e) => monsterSearch(e, 2)}
-            value={searchVal2}
-            type="text"
-            name="monster2-search"
-            id="monster2-search"
-            placeholder="Search Monsters"
-          />
-          <ul className="monster-list">
-            {filteredMonsters2?.map((monster) => {
-              return (
-                <li
-                  key={monster.index}
-                  className="list-monster"
-                  value={monster.name}
-                  onClick={(e) => setHelper(e, 2)}
-                >
-                  {" "}
-                  {monster.name}{" "}
-                </li>
-              );
-            })}
-          </ul>
+          <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setCurrentMonster2} />
         </div>
       </div>
       <div className="fight-button">

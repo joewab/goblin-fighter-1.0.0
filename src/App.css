@@ -27,7 +27,7 @@ body {
   }
   
   .App-body{
-    margin: 0 !important;
+    margin: 0;
     background-color:#FB2E01;
     height: 100%;
     /* overflow for mobile only */
@@ -36,6 +36,22 @@ body {
     .flex-grid {
       display: flex;
       flex-direction:column;
+    }
+
+    button {
+        background-color:#d32700;
+        font-family: limit-outline;
+        font-size: large;
+        border-radius: 1px;
+        border-style: solid;
+        border-color: #000000;
+        width: 6rem;
+        height: 3rem;
+    }
+
+    input {
+        background-color: #FFFEB3;
+        font-family:limit;
     }
 
     .cloud-1, .cloud-2 {
@@ -81,8 +97,12 @@ body {
         margin: 2rem;
         padding: 1rem;
         border-radius: 1px;
-        border-style: solid;
-        border-width: 1px;
+        border-style: dashed;
+        border-width: 5px;
+    }
+
+    .monster-select {
+        margin-top: 0.5rem;
     }
 
     .versus {
@@ -103,7 +123,7 @@ body {
     }
 
     .monster-list {
-        max-height: 20rem;
+        max-height: 17rem;
         overflow-y: scroll;
         display: flex;
         flex-direction: column;
@@ -119,21 +139,16 @@ body {
         padding-bottom: 2rem;
     }
 
-    .fight-button button {
-        background-color:#d32700;
-        font-family: limit-outline;
-        font-size: large;
-        border-radius: 1px;
-        border-style: solid;
-        border-color: #000000;
-        width: 6rem;
-        height: 3rem;
-    }
+    .choose-random-button {
+        margin-bottom: 0.5rem;
+        background-color: #FB2E01;
+     }
 
     .fight-result {
         display: flex;
         color: #666547;
-        text-shadow: #FC0 1px 0 10px;        justify-content: center;
+        text-shadow: #FC0 1px 0 10px;        
+        justify-content: center;
         text-align: center;
         vertical-align: text-top;
         font-family: limit;
@@ -141,6 +156,8 @@ body {
         height: 10rem;
         width: 100%;
     }
+
+    
 }
 
 .animateCloud1 {
