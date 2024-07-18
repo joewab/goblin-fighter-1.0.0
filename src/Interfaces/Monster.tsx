@@ -101,14 +101,14 @@ export interface Action {
     name: string;
     desc: string;
     multiattack_type?: string;
-    actions?: {
+    actions: {
         action_name: string;
         count: number;
         type: string;
     }[];
-    attack_bonus?: number;
-    damage?: ActionDamage[];
-    dc?: ActionDC;
+    attack_bonus: number;
+    damage: ActionDamage[];
+    dc: ActionDC;
 }
 
 export interface LegendaryAction {

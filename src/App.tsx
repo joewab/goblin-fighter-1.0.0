@@ -4,8 +4,6 @@ import { FC, useEffect, useState } from "react";
 import { MonsterRef } from "./Interfaces/MonsterRef";
 import { useInView } from "react-intersection-observer";
 import FightArena from "./FightArena/FightArena";
-import Clouds from "./Clouds/Clouds";
-
 interface AppProps {
   title: string;
 }
@@ -76,7 +74,7 @@ const App: FC<AppProps> = ({ title }) => {
         <p>{title}</p>
       </header>
       <body className="App-body">
-        <Clouds scrollStarted={scrollStarted} arenaInView={arenaInView} />
+        {/* <Clouds scrollStarted={scrollStarted} arenaInView={arenaInView} /> */}
         <div ref={areRef} className="title top">
           <span className={`at-rest ${areVisible ? "animateZoom" : ""}`}>
             Are
@@ -98,7 +96,7 @@ const App: FC<AppProps> = ({ title }) => {
           </span>
         </div>
         <div ref={battleRef} className="title">
-          <span className={`at-rest ${battleVisible ? "animateBattle" : ""}`}>
+          <span className={`at-rest ${battleVisible ? "animateZoom" : ""}`}>
             Battle?
           </span>
         </div>
