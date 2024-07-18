@@ -22,14 +22,6 @@ const App: FC<AppProps> = ({ title }) => {
     });
   };
 
-  const { ref: headerRef } = useInView({
-    threshold: 1,
-    root: null,
-    rootMargin: "0px",
-    onChange: (inView) => {
-      setScrollStarted(!inView);
-    }
-  });
   const { ref: areRef, inView: areVisible } = useInView({
     threshold: 0.5,
     root: null,
@@ -55,26 +47,15 @@ const App: FC<AppProps> = ({ title }) => {
     root: null,
     rootMargin: "0px"
   });
-  const { ref: disableClouds } = useInView({
-    threshold: 0.5,
-    root: null,
-    rootMargin: "0px",
-    onChange: (inView) => {
-      inView ? setArenaInView(true) : null;
-    }
-  });
 
   const [allMonsters, setAllMonsters] = useState<MonsterRef[]>([]);
-  const [scrollStarted, setScrollStarted] = useState(false);
-  const [arenaInView, setArenaInView] = useState(false);
 
   return (
     <div className="App">
-      <header ref={headerRef} className="App-header">
+      <header className="App-header">
         <p>{title}</p>
       </header>
       <body className="App-body">
-        {/* <Clouds scrollStarted={scrollStarted} arenaInView={arenaInView} /> */}
         <div ref={areRef} className="title top">
           <span className={`at-rest ${areVisible ? "animateZoom" : ""}`}>
             Are
@@ -102,7 +83,6 @@ const App: FC<AppProps> = ({ title }) => {
         </div>
         <FightArena allMonsters={allMonsters} />
       </body>
-      <div ref={disableClouds}></div>
     </div>
   );
 };

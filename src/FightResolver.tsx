@@ -116,7 +116,8 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       setFightText((prevText) => {
         return prevText + '\n\n' + res.data.text;
       });
-
+      console.log(response);
+      console.log(fightText);
       setDisplayText(res.data.text);
       
     } catch (error) {
