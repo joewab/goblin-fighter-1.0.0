@@ -4,7 +4,9 @@
 
 body {
     width: 100%;
+    height: auto;
     margin: 0;
+    background-color:#FB2E01;
 }
 
 .App {
@@ -136,7 +138,7 @@ body {
     }
 
     .fight-button {
-        padding-bottom: 2rem;
+        margin-bottom: 4rem;
     }
 
     .choose-random-button {
@@ -157,7 +159,11 @@ body {
         width: 100%;
     }
 
-    
+    .fight-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .animateCloud1 {
@@ -215,7 +221,7 @@ body {
 }
 
 .animateBattle {
-    animation-duration: 5s;
+    animation-duration: 1s;
     animation-name: animate-battle;
     animation-fill-mode: forwards;
 }
@@ -237,7 +243,7 @@ body {
         transform: scale(2);
     }
     100% {
-        transform: scale(200) translate3D(100vw, -200vh, 0) rotate(0);
+        transform: scale(5);
         display: none;
     }
 }
