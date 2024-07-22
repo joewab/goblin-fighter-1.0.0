@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { MonsterRef } from "./Interfaces/MonsterRef";
 import { useInView } from "react-intersection-observer";
 import FightArena from "./FightArena/FightArena";
+import React from "react";
 interface AppProps {
   title: string;
 }

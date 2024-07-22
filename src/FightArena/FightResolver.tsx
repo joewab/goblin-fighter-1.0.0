@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Action, Monster } from './Interfaces/Monster';
-import { rollDice } from './RollDice';
+import { Action, Monster } from '../Interfaces/Monster';
+import { rollDice } from '../RollDice';
+import Typewriter from "../Typewriter"
 
 interface Monsters {
   monster1: Monster | undefined;
@@ -19,6 +20,8 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
   const [monst1HP, setMonst1HP] = useState(1);
   const [monst2HP, setMonst2HP] = useState(1);
   const [hpInit, setHpInit] = useState(false);
+  const [startType, setStartType] = useState(false);
+  const [clearText, setClearText] = useState(false);
 
   const abilityMods: number[] = [
     -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6,
@@ -35,7 +38,11 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       if(monst1HP <= 0 || monst2HP <= 0){
         const winner: string | undefined = monst1HP <= 0 ? monster2?.name : monster1?.name;
         setButtonText('Fight Complete');
-        setDisplayText(`The battle is over, ${winner} wins!`)
+        setDisplayText(() =>  {
+          setClearText(true);
+          setStartType(true);
+          return `The battle is over, ${winner} wins!`
+        });
       } else if(turn===0) {
         const monster1InitiativeBonus: number = monster1 ? abilityMods[monster1.dexterity - 1] : 0;
         const monster2InitiativeBonus: number = monster2 ? abilityMods[monster2.dexterity - 1] : 0;    
@@ -62,7 +69,11 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
         } 
         const initiativeString: string = `Initiative: ${monster1?.name} rolls a ${monster1Initiative}, ${monster2?.name} rolls a ${monster2Initiative}, ${winner} goes first!`;
         setFightText(initiativeString);
-        setDisplayText(initiativeString)
+        setDisplayText(() =>  { 
+          setClearText(true);
+          setStartType(true);
+          return initiativeString
+        })
         setButtonText('Continue Fight');
         setFightBegun(true);
 
@@ -90,11 +101,10 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
             } else {
               setMonst1HP(monst1HP - totalDamage);
             }
-  
             if(monst1HP <= 0 || monst2HP <= 0){
                 const newPrompt = `in one sentence describe how a ${attacker.name} defeats a ${defender.name} using a ${selectedAttack.name} attack that deals ${totalDamage} damage. Use language from a fantasy novel. Make sure it is in the present tense.`
                 setButtonText('Fight Complete');
-                handleGenerateText(newPrompt);            
+                handleGenerateText(newPrompt); 
             } else {
               const newPrompt = `in one sentence describe a successful ${selectedAttack.name} attack from a ${attacker.name} on a ${defender.name} that deals ${totalDamage} damage. Use language from a fantasy novel. Make sure it is in the present tense.`
               handleGenerateText(newPrompt);
@@ -116,9 +126,11 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       setFightText((prevText) => {
         return prevText + '\n\n' + res.data.text;
       });
-      console.log(response);
-      console.log(fightText);
-      setDisplayText(res.data.text);
+      setDisplayText(() => {
+        setClearText(true);
+        setStartType(true);
+        return res.data.text;
+      });
       
     } catch (error) {
       console.error('Error generating text:', error);
@@ -128,9 +140,7 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
 
   return (
     <div className='fight-container'>
-      <div className={`fight-result ${fightBegun ? "fight-begun" : ""}`}>
-        {displayText}
-      </div>
+      <Typewriter text={displayText} delay={10} startType={startType} setStartType={setStartType} clearText={clearText} setClearText={setClearText} />
       <button className='fight-button' onClick={() => resolveFight(monster1, monster2)}>{buttonText}</button>
     </div>
   );
