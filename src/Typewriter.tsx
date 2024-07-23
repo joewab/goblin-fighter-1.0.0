@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FC, Dispatch, SetStateAction } from 'react';
+import { useState, useEffect, FC, Dispatch, SetStateAction } from 'react';
 
 interface TypeInput {
     text: string;
