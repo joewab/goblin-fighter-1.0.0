@@ -6,7 +6,7 @@ body {
     width: 100%;
     height: auto;
     margin: 0;
-    background-color:#FB2E01;
+    background-color:#323040;
 }
 
 .App {
@@ -15,7 +15,7 @@ body {
   }
   
   .App-header {
-    background-color:#666547;
+    background-color:#323223;
     height: 3rem;
     display: flex;
     font-family: brutal;
@@ -30,7 +30,7 @@ body {
   
   .App-body{
     margin: 0;
-    background-color:#FB2E01;
+    background-color:#323040;
     height: 100%;
     /* overflow for mobile only */
     overflow-y: auto;
@@ -80,7 +80,7 @@ body {
 
     .title {
         display: flex;
-        color: #666547;
+        color: #323223;
         text-shadow: #FC0 1px 0 10px;        justify-content: center;
         align-items: center;
         font-family: limit;
@@ -94,6 +94,7 @@ body {
     }
 
     .fighter-select {
+        height:min-content;
         background-color:#d32700;
         color: #FFFEB3;
         margin: 2rem;
@@ -110,7 +111,7 @@ body {
     .versus {
         font-family: brutal;
         font-size: 3rem;
-        color: #666547;
+        color: #323223;
         text-shadow: #FC0 1px 0 10px;
       }
 
@@ -139,16 +140,18 @@ body {
 
     .fight-button {
         margin-bottom: 4rem;
+        cursor: pointer;
     }
 
     .choose-random-button {
         margin-bottom: 0.5rem;
         background-color: #FB2E01;
+        cursor: pointer;
      }
 
     .fight-result {
         display: flex;
-        color: #666547;
+        color: #323223;
         text-shadow: #FC0 1px 0 10px;        
         justify-content: center;
         text-align: center;

@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import { MonsterRef } from "../Interfaces/MonsterRef";
-import MonsterCard from "../MonsterCard/MonsterCard";
+import MonsterCard from "./MonsterCard/MonsterCard";
 import { Monster } from "../Interfaces/Monster";
 import MonsterSelect from "./MonsterSelect/MonsterSelect";
-import FightResolver from "../FightResolver";
+import FightResolver from "./FightResolver";
 
 interface AllMonsters {
     allMonsters: MonsterRef[];
