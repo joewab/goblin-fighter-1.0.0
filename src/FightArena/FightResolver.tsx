@@ -12,9 +12,6 @@ interface Monsters {
 const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
 
   const [buttonText, setButtonText] = useState('Fight!')
-  const [response, setResponse] = useState('');
-  const [fightBegun, setFightBegun] = useState(false);
-  const [fightText, setFightText] = useState('');
   const [displayText, setDisplayText] = useState('');
   const [turn, setTurn] = useState(0);
   const [monst1HP, setMonst1HP] = useState(1);
@@ -68,15 +65,14 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
           }
         } 
         const initiativeString: string = `Initiative: ${monster1?.name} rolls a ${monster1Initiative}, ${monster2?.name} rolls a ${monster2Initiative}, ${winner} goes first!`;
-        setFightText(initiativeString);
+        //TBD: create fightText state to record the entire encounter, allow pdf download
+        // setFightText(initiativeString);
         setDisplayText(() =>  { 
           setClearText(true);
           setStartType(true);
           return initiativeString
         })
         setButtonText('Continue Fight');
-        setFightBegun(true);
-
       } else {      
           const attacker: Monster = turn===1 ? monster1 : monster2;
           const defender: Monster = turn===1 ? monster2 : monster1;
@@ -123,9 +119,10 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
   const handleGenerateText = async (newPrompt: string) => {    
     try {
       const res = await axios.post('http://localhost:5000/api/generate', { prompt: newPrompt });
-      setFightText((prevText) => {
-        return prevText + '\n\n' + res.data.text;
-      });
+      //TBD: create fightText state to record the entire encounter, allow pdf download
+      // setFightText((prevText) => {
+      //   return prevText + '\n\n' + res.data.text;
+      // });
       setDisplayText(() => {
         setClearText(true);
         setStartType(true);
@@ -134,7 +131,6 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       
     } catch (error) {
       console.error('Error generating text:', error);
-      setResponse('Error generating text. Please try again later.');
     }
   };
 
