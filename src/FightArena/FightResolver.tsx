@@ -118,7 +118,7 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
 
   const handleGenerateText = async (newPrompt: string) => {    
     try {
-      const res = await axios.post('http://localhost:5000/api/generate', { prompt: newPrompt });
+      const res = await axios.post('https://peht7l6021.execute-api.us-east-2.amazonaws.com/dev', { prompt: newPrompt });
       //TBD: create fightText state to record the entire encounter, allow pdf download
       // setFightText((prevText) => {
       //   return prevText + '\n\n' + res.data.text;
@@ -126,9 +126,8 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       setDisplayText(() => {
         setClearText(true);
         setStartType(true);
-        return res.data.text;
+        return res.data.body;
       });
-      
     } catch (error) {
       console.error('Error generating text:', error);
     }
