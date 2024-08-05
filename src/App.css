@@ -6,16 +6,16 @@ body {
     width: 100%;
     height: auto;
     margin: 0;
-    background-color:#323040;
+    background-color:#ffffff;
 }
 
 .App {
     text-align: center;
-    background-color: #666547;
+    background-color: #ffffff;
   }
   
   .App-header {
-    background-color:#323223;
+    background-color:#ffffff;
     height: 3rem;
     display: flex;
     font-family: brutal;
@@ -30,14 +30,14 @@ body {
   
   .App-body{
     margin: 0;
-    background-color:#323040;
+    background-color:#ffffff;
     height: 100%;
     /* overflow for mobile only */
     overflow-y: auto;
-  
+      
     .flex-grid {
       display: flex;
-      flex-direction:column;
+      flex-wrap: wrap;
     }
 
     button {
@@ -56,42 +56,32 @@ body {
         font-family:limit;
     }
 
-    .cloud-1, .cloud-2 {
-        position: sticky;
-        top: 0.5rem;
-        height: 15rem;
-        width: 10rem;
-        text-align: center;
-    }
-
-    .cloud-1 {
-    right: 500px;
-    }
-
-    .cloud-1 img {
-        top: -2.5rem;
-        left: -100%;
-        position:absolute;
-    }
-    
-    .cloud-2 {
-    left: 10%;
-    }
-
     .title {
         display: flex;
+        flex: 50%;
         color: #323223;
-        text-shadow: #FC0 1px 0 10px;        justify-content: center;
+        justify-content: center;
         align-items: center;
         font-family: limit;
-        font-size: 5rem;
-        height: 15rem;
-        width: 100%;
+        font-size: 1rem;
+        margin-top: 1rem;
+        width: 50%;
     }
 
-    .top {
-        margin-top: 15rem;
+    .title-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+
     }
+
+    .flex-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
     .fighter-select {
         height:min-content;
@@ -109,10 +99,9 @@ body {
     }
 
     .versus {
-        font-family: brutal;
+        font-family: limit;
         font-size: 3rem;
         color: #323223;
-        text-shadow: #FC0 1px 0 10px;
       }
 
     .monsterTitle {
@@ -158,8 +147,9 @@ body {
         vertical-align: text-top;
         font-family: limit;
         font-size: 2rem;
-        height: 10rem;
-        width: 100%;
+        min-height: 2rem;
+        padding-left: 20%;
+        padding-right: 20%;
     }
 
     .fight-container {
@@ -169,47 +159,8 @@ body {
     }
 }
 
-.animateCloud1 {
-    animation-duration: 5s;
-    animation-name: animate-cloud-1;
-    animation-fill-mode: forwards;
-}
-
-@keyframes animate-cloud-1 {
-    
-    10% {
-        transform: translate(100%);
-    }
-    50% {
-        transform: translate(-200%);
-    }
-    100% {
-        transform: translate(-300%);
-        opacity: 0;
-    }
-}
-
-.animateCloud2 {
-    animation-duration: 5s;
-    animation-name: animate-cloud-2;
-    animation-fill-mode: forwards;
-}
-
-@keyframes animate-cloud-2 {
-    10% {
-        transform: translate(-100%);
-    }
-    50% {
-        transform: translate(200%);
-    }
-    100% {
-        transform: translate(300%);
-        opacity: 0;
-    }
-}
-
 .at-rest {
-    display: inline-block;
+    display: flex;
 }
 
 .animateZoom {
@@ -250,7 +201,7 @@ body {
         display: none;
     }
 }
-  
+
 @media only screen and (min-width: 1000px) {
 
     .App-header {
@@ -260,37 +211,6 @@ body {
 
     .App-body {
         overflow-y:inherit;
-
-        .title {
-            height: 20rem;
-        }  
-
-        .cloud-1 {
-            right: 5px;
-        }
-    
-        .cloud-1 img {
-            width: 800px;
-            height: 600px;
-            left: -100%;
-            position:absolute;
-        }
-    
-        .cloud-2 {
-            left: 900px;
-        }
-
-        .cloud-2 img {
-            top: -10rem;
-            position: absolute;
-            width: 1000px !important;
-            height: 800px !important;
-        }
-
-        .cloud-2 img {
-            width: 800px;
-            height: 600px;
-        }
 
         .top {
             margin-top: 0;

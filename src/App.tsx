@@ -57,30 +57,32 @@ const App: FC<AppProps> = ({ title }) => {
         <p>{title}</p>
       </header>
       <body className="App-body">
-        <div ref={areRef} className="title top">
-          <span className={`at-rest ${areVisible ? "animateZoom" : ""}`}>
-            Are
-          </span>
-        </div>
-        <div ref={youRef} className="title">
-          <span className={`at-rest ${youVisible ? "animateZoom" : ""}`}>
-            You
-          </span>
-        </div>
-        <div ref={readyRef} className="title">
-          <span className={`at-rest ${readyVisible ? "animateZoom" : ""}`}>
-            Ready
-          </span>
-        </div>
-        <div ref={toRef} className="title">
-          <span className={`at-rest ${toVisible ? "animateZoom" : ""}`}>
-            To
-          </span>
-        </div>
-        <div ref={battleRef} className="title">
-          <span className={`at-rest ${battleVisible ? "animateZoom" : ""}`}>
-            Battle?
-          </span>
+        <div className="title-container">
+          <div ref={areRef} className="title">
+            <span className={`at-rest`}>
+              Welcome to Goblin Fighter! Please choose two monsters you would like to have fight each other, then click the fight button.
+            </span>
+          </div>
+          {/* <div ref={youRef} className="title">
+            <span className={`at-rest ${youVisible ? "animateZoom" : ""}`}>
+              You
+            </span>
+          </div>
+          <div ref={readyRef} className="title">
+            <span className={`at-rest ${readyVisible ? "animateZoom" : ""}`}>
+              Ready
+            </span>
+          </div>
+          <div ref={toRef} className="title">
+            <span className={`at-rest ${toVisible ? "animateZoom" : ""}`}>
+              To
+            </span>
+          </div>
+          <div ref={battleRef} className="title">
+            <span className={`at-rest ${battleVisible ? "animateZoom" : ""}`}>
+              Battle?
+            </span>
+          </div> */}
         </div>
         <FightArena allMonsters={allMonsters} />
       </body>
