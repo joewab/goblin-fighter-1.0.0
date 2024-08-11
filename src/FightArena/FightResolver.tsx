@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import axios from 'axios';
 import { Action, Monster } from '../Interfaces/Monster';
 import { rollDice } from '../RollDice';
@@ -7,10 +7,11 @@ import Typewriter from "../Typewriter"
 interface Monsters {
   monster1: Monster | undefined;
   monster2: Monster | undefined;
+  setCurrentMonster1: Dispatch<SetStateAction<Monster | undefined>>;
+  setCurrentMonster2: Dispatch<SetStateAction<Monster | undefined>>;
 }
 
-const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
-
+const FightResolver: React.FC<Monsters> = ({monster1, monster2, setCurrentMonster1, setCurrentMonster2}) => {
   const [buttonText, setButtonText] = useState('Fight!')
   const [displayText, setDisplayText] = useState('');
   const [turn, setTurn] = useState(0);
@@ -41,6 +42,8 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
           setStartType(true);
           return `The battle is over, ${winner} wins!`
         });
+        setCurrentMonster1(undefined);
+        setCurrentMonster2(undefined);
       } else if(turn===0) {
         const monster1InitiativeBonus: number = monster1 ? abilityMods[monster1.dexterity - 1] : 0;
         const monster2InitiativeBonus: number = monster2 ? abilityMods[monster2.dexterity - 1] : 0;    

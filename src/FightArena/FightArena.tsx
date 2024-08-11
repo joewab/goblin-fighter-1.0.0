@@ -36,7 +36,7 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
           <MonsterSelect allMonsters={allMonsters} setCurrentMonster={setMonster2Helper} />
         </div>
       </div>
-      <FightResolver monster1={currentMonster1} monster2={currentMonster2}/>
+      <FightResolver monster1={currentMonster1} monster2={currentMonster2} setCurrentMonster1={setCurrentMonster1} setCurrentMonster2={setCurrentMonster2}/>
     </div>
   );
 };
