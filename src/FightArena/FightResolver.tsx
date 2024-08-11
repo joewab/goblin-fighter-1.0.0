@@ -19,6 +19,7 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
   const [hpInit, setHpInit] = useState(false);
   const [startType, setStartType] = useState(false);
   const [clearText, setClearText] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const abilityMods: number[] = [
     -5, -4, -4, -3, -3, -2, -2, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6,
@@ -119,7 +120,8 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
       });    }
   };
 
-  const handleGenerateText = async (newPrompt: string) => {    
+  const handleGenerateText = async (newPrompt: string) => {  
+    setLoading(true);  
     try {
       const res = await axios.post('https://peht7l6021.execute-api.us-east-2.amazonaws.com/dev', { prompt: newPrompt });
       //TBD: create fightText state to record the entire encounter, allow pdf download
@@ -134,12 +136,13 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
     } catch (error) {
       console.error('Error generating text:', error);
     }
+    setLoading(false);  
   };
 
   return (
     <div className='fight-container'>
       <Typewriter text={displayText} delay={10} startType={startType} setStartType={setStartType} clearText={clearText} setClearText={setClearText} />
-      <button className='fight-button' onClick={() => resolveFight(monster1, monster2)}>{buttonText}</button>
+      <button className={loading ? 'fight-button lds-dual-ring': 'fight-button'} onClick={() => resolveFight(monster1, monster2)}>{buttonText}</button>
     </div>
   );
 };
