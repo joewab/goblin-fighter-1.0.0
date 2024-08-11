@@ -22,7 +22,7 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
   }
 
   return (
-    <>
+    <div className="flex-container">
       <div className="flex-grid">
         <div className="fighter-select">
           <MonsterCard monster={currentMonster1} />
@@ -37,7 +37,7 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
         </div>
       </div>
       <FightResolver monster1={currentMonster1} monster2={currentMonster2}/>
-    </>
+    </div>
   );
 };
 
