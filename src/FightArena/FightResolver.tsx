@@ -111,9 +111,12 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2}) => {
           }
           setTurn(turn===1 ? 2 : 1);
       }  
-    } else {
-      setDisplayText('Please choose two fighters.');
-    }
+    } else {      
+      setDisplayText(() => {
+        setClearText(true);
+        setStartType(true);
+        return 'Please choose two monsters.';
+      });    }
   };
 
   const handleGenerateText = async (newPrompt: string) => {    
