@@ -18,7 +18,6 @@ const FightArena: FC<AllMonsters> = ({ allMonsters }) => {
   const [monst2HP, setMonst2HP] = useState(1);
   const [hpInit, setHpInit] = useState(false);
   const [buttonText, setButtonText] = useState('Fight!');
-  const [roundCount, setRoundCount] = useState(0);
 
   const setMonster1Helper = (monster: Monster) => {
     setCurrentMonster1(monster);
