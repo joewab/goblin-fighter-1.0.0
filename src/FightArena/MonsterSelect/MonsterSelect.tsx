@@ -30,10 +30,9 @@ const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster, setCle
   };
 
   const filterMonstList = (filterString: string) => {
-    let filteredList: MonsterRef[] | undefined;
-      filteredList = allMonsters?.filter((monster) => {
+    const filteredList: MonsterRef[] | undefined = allMonsters?.filter((monster) => {
         setSearchVal(filterString);
-        return searchVal ? monster.index.includes(filterString) : [];
+        return searchVal ? monster.index.includes(filterString.toLowerCase()) : [];
       });
     return filteredList;
   };
