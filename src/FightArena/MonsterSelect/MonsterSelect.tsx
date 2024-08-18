@@ -1,5 +1,5 @@
 import { Monster } from "../../Interfaces/Monster";
-import { FC, useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import { MonsterRef } from "../../Interfaces/MonsterRef";
 import axios from "axios";
 import { rollDice } from "../../RollDice";
@@ -7,9 +7,15 @@ import { rollDice } from "../../RollDice";
 interface AllMonsters {
   allMonsters: MonsterRef[];
   setCurrentMonster: (monster: Monster) => void;
+  setClearText: Dispatch<SetStateAction<boolean>>;
+  setTurn: Dispatch<SetStateAction<number>>;
+  setMonst1HP: Dispatch<SetStateAction<number>>;
+  setMonst2HP: Dispatch<SetStateAction<number>>;
+  setHpInit: Dispatch<SetStateAction<boolean>>;
+  setButtonText: Dispatch<SetStateAction<string>>;
 }
 
-const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster }) => {
+const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster, setClearText, setTurn, setMonst1HP, setMonst2HP, setHpInit, setButtonText }) => {
 
   const [searchVal, setSearchVal] = useState("");
   const [filteredMonsters, setFilteredMonsters] = useState<MonsterRef[]>();
@@ -43,6 +49,12 @@ const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster }) => {
               setCurrentMonster(response?.data);
               setFilteredMonsters([]);
               setSearchVal(monsterName);
+              setClearText(true);
+              setTurn(0);
+              setMonst1HP(1);
+              setMonst2HP(1);
+              setHpInit(false);
+              setButtonText('Fight!')
           });
         }
       }

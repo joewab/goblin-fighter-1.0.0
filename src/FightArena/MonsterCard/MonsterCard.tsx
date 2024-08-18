@@ -4,9 +4,11 @@ import { FC } from 'react';
 
 interface MonsterProps {
     monster: Monster | undefined;
+    hpInit: boolean;
+    monstHP: number;
   }
 
-const MonsterCard: FC<MonsterProps> = ({ monster }) => {
+const MonsterCard: FC<MonsterProps> = ({ monster, hpInit, monstHP }) => {
 
     if(!monster){
         return (
@@ -23,7 +25,7 @@ const MonsterCard: FC<MonsterProps> = ({ monster }) => {
         <div className='monster-card'>
             <div className='monsterTitle'>{monster.name}</div>
             <div className='monsterStat'>AC: {monster.armor_class[0].value}</div>
-            <div className='monsterStat'>HP: {monster.hit_points}</div>
+            <div className='monsterStat'>HP: {hpInit ? monstHP : monster.hit_points}</div>
             <div className='monsterStat'>CR: {monster.challenge_rating}</div>
         </div>
     );

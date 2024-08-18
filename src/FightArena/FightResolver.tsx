@@ -9,17 +9,25 @@ interface Monsters {
   monster2: Monster | undefined;
   setCurrentMonster1: Dispatch<SetStateAction<Monster | undefined>>;
   setCurrentMonster2: Dispatch<SetStateAction<Monster | undefined>>;
+  clearText: boolean;
+  setClearText:Dispatch<SetStateAction<boolean>>;
+  turn: number;
+  setTurn: Dispatch<SetStateAction<number>>;
+  monst1HP: number;
+  setMonst1HP: Dispatch<SetStateAction<number>>;
+  monst2HP: number;
+  setMonst2HP: Dispatch<SetStateAction<number>>;
+  hpInit: boolean;
+  setHpInit: Dispatch<SetStateAction<boolean>>;
+  buttonText: string;
+  setButtonText: Dispatch<SetStateAction<string>>;
 }
 
-const FightResolver: React.FC<Monsters> = ({monster1, monster2, setCurrentMonster1, setCurrentMonster2}) => {
-  const [buttonText, setButtonText] = useState('Fight!')
+const FightResolver: React.FC<Monsters> = ({monster1, monster2, setCurrentMonster1, setCurrentMonster2, clearText, setClearText,
+  turn, setTurn, monst1HP, setMonst1HP, monst2HP, setMonst2HP, hpInit, setHpInit, buttonText, setButtonText
+}) => {
   const [displayText, setDisplayText] = useState('');
-  const [turn, setTurn] = useState(0);
-  const [monst1HP, setMonst1HP] = useState(1);
-  const [monst2HP, setMonst2HP] = useState(1);
-  const [hpInit, setHpInit] = useState(false);
   const [startType, setStartType] = useState(false);
-  const [clearText, setClearText] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const abilityMods: number[] = [
@@ -144,7 +152,7 @@ const FightResolver: React.FC<Monsters> = ({monster1, monster2, setCurrentMonste
 
   return (
     <div className='fight-container'>
-      <Typewriter text={displayText} delay={10} startType={startType} setStartType={setStartType} clearText={clearText} setClearText={setClearText} />
+      <Typewriter text={displayText} delay={15} startType={startType} setStartType={setStartType} clearText={clearText} setClearText={setClearText} />
       <button className={loading ? 'fight-button lds-dual-ring': 'fight-button'} onClick={() => resolveFight(monster1, monster2)}>{buttonText}</button>
     </div>
   );
