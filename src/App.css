@@ -252,7 +252,7 @@ body {
         justify-content: center;
         /* align-items: center; */
         flex-direction: column;
-        width: 1000px; 
+        width: 1200px; 
         text-align: center; 
         margin: 0px auto;
 
@@ -265,7 +265,7 @@ body {
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            max-width: 1000px;
+            max-width: 1200px;
         }
 
         .flex-grid {
