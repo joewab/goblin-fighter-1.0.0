@@ -63,6 +63,13 @@ const App: FC<AppProps> = ({ title }) => {
               Welcome to Goblin Fighter! Please choose two monsters, then click the fight button.
             </span>
           </div>
+          <div className="title">
+            <span>
+              <a href="https://github.com/joewab/goblin-fighter-1.0.0" target="_blank">
+                github repo
+              </a>
+            </span>
+          </div>
         </div>
         <FightArena allMonsters={allMonsters} />
       </body>

@@ -69,11 +69,17 @@ body {
 
     .title-container {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
         justify-content: center;
+        align-items: center;
         margin-bottom: 1rem;
 
+    }
+
+    a:hover {
+        display: block;
+        cursor: pointer;
     }
 
     .flex-grid {
@@ -148,13 +154,11 @@ body {
         color: #323223;
         text-shadow: #FC0 1px 0 10px;        
         justify-content: center;
-        text-align: center;
+        text-align: left;
         vertical-align: text-top;
         font-family: limit;
         font-size: 2rem;
         min-height: 2rem;
-        padding-left: 20%;
-        padding-right: 20%;
     }
 
     .fight-container {
@@ -278,6 +282,20 @@ body {
             border-width: 2px;
             border-style: solid;
           }
+
+          .fight-result {
+            display: flex;
+            color: #323223;
+            text-shadow: #FC0 1px 0 10px;        
+            justify-content: center;
+            text-align: left;
+            vertical-align: text-top;
+            font-family: limit;
+            font-size: 2rem;
+            min-height: 2rem;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
     }
 
 }
