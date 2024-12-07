@@ -41,7 +41,6 @@ const Typewriter: FC<TypeInput> = ({ text, delay, startType, setStartType, clear
     }, [currentIndex, delay, text, startType]);
 
     const setFightTextBoxHeight = (numChars: number) => {
-        console.log('in set height', numChars);
         const textBox = document.getElementById('fightTextBox');
         const screenWidth = document.body.offsetWidth;        
         if(numChars >=90 && textBox){

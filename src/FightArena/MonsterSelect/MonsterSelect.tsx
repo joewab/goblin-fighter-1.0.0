@@ -21,20 +21,20 @@ const MonsterSelect: FC<AllMonsters> = ({ allMonsters, setCurrentMonster, setCle
   const [filteredMonsters, setFilteredMonsters] = useState<MonsterRef[]>();
 
   const monsterSearch = (event: any) => {
-      setFilteredMonsters(filterMonstList(event.target.value));
+    setFilteredMonsters(() => {
+      setSearchVal(event.target.value)      
+      if(event.target.value !== ''){
+        const result = allMonsters.filter((monster) => {
+          return monster.name.toLowerCase().startsWith(event.target.value.toLowerCase())
+        });            
+        return result;
+      };
+    });
   };
 
   const chooseRandomMonster = () => {
     const randomIndex = rollDice(allMonsters.length);
     setHelper(allMonsters[randomIndex].name);
-  };
-
-  const filterMonstList = (filterString: string) => {
-    const filteredList: MonsterRef[] | undefined = allMonsters?.filter((monster) => {
-        setSearchVal(filterString);
-        return searchVal ? monster.index.includes(filterString.toLowerCase()) : [];
-      });
-    return filteredList;
   };
 
   const setHelper = (monsterName: string) => {
