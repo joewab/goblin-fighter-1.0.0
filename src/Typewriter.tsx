@@ -14,11 +14,15 @@ const Typewriter: FC<TypeInput> = ({ text, delay, startType, setStartType, clear
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
+  useEffect(() => {    
+    if(text.length===0){
+        setFightTextBoxHeight(4);
+    }
     if (currentIndex < text.length && startType) {
         const timeout = setTimeout(() => {        
         setCurrentText((prevText) => { 
             if(clearText) {
+                setFightTextBoxHeight(text.length);
                 setClearText(false);
                 return text[0];
             }
@@ -36,7 +40,18 @@ const Typewriter: FC<TypeInput> = ({ text, delay, startType, setStartType, clear
     }
     }, [currentIndex, delay, text, startType]);
 
-    return <div className='fight-result'>{currentText}</div>;
+    const setFightTextBoxHeight = (numChars: number) => {
+        console.log('in set height', numChars);
+        const textBox = document.getElementById('fightTextBox');
+        const screenWidth = document.body.offsetWidth;        
+        if(numChars >=90 && textBox){
+            textBox.style.height= screenWidth < 1000? `${Math.round(numChars/45)*6}rem` : `${Math.round(numChars/45)*3.3}rem`
+        } else if (textBox) {
+            textBox.style.height= screenWidth < 1000? '8rem' : '6rem'
+        }
+      }
+
+    return <div id='fightTextBox' className='fight-result'>{currentText}</div>;
 };
 
 export default Typewriter;
