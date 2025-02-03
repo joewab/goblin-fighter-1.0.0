@@ -50,7 +50,7 @@ const Typewriter: FC<TypeInput> = ({ text, delay, startType, setStartType, clear
         }
       }
 
-    return <div id='fightTextBox' className='fight-result'>{currentText}</div>;
+    return( <div id='fightTextBox' className='fight-result'>{currentText}</div> )
 };
 
 export default Typewriter;
